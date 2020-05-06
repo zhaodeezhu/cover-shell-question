@@ -1,4 +1,5 @@
 import {EventEmitter} from 'events'
+import {colorAll} from '../src/color';
 
 interface IList {
 	/** 输入正确以后要执行的方法 */
@@ -11,6 +12,8 @@ interface IList {
 	options?: string[];
   oriQuestion?: string;
   again?: boolean;
+  /** 颜色 */
+  color?: keyof typeof colorAll;
 }
 
 declare class ShellQuestion extends EventEmitter {

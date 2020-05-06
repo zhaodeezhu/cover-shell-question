@@ -1,6 +1,6 @@
 {
   "name": "cover-shell-question",
-  "version": "0.0.12",
+  "version": "0.0.18",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
@@ -24,5 +24,8 @@
     "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"
   },
-  "types": "./types/index.d.ts"
+  "types": "./types/index.d.ts",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
 }

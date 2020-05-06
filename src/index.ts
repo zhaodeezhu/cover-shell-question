@@ -1,4 +1,6 @@
 import {EventEmitter} from 'events';
+import colors from 'colors';
+import {colorAll} from './color';
 
 interface IList {
   /** 输入正确以后要执行的方法 */
@@ -11,6 +13,7 @@ interface IList {
   options?: string[];
   oriQuestion?: string;
   again?: boolean;
+  color?: keyof typeof colorAll;
 }
 
 export = class ShellQuestion extends EventEmitter {
@@ -74,7 +77,7 @@ export = class ShellQuestion extends EventEmitter {
   /** 输入型控制 */
   private input(item: IList): IList {
     return {
-      question: item.question,
+      question: item.color ? colorAll[item.color](item.question) : item.question,
       handle: item.handle,
       type: 'input'
     }
@@ -90,7 +93,7 @@ export = class ShellQuestion extends EventEmitter {
       str += item
     })
     return {
-      question: `${item.question}(${str})`,
+      question: item.color ? colorAll[item.color](`${item.question}(${str})`) : `${item.question}(${str})`,
       handle: item.handle,
       options: item.options,
       oriQuestion: item.question,
